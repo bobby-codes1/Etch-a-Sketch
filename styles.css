@@ -1,0 +1,64 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.rowOne {
+    display: flex;
+    flex-direction: row;
+    text-align:center;
+    /*align-content: space-between; */
+    
+}
+
+.rowTwo {
+    display: flex;
+    flex-direction: row;
+    text-align:center;
+    /*align-content: space-between; */
+    
+}
+
+.rowThree {
+    display: flex;
+    flex-direction: row;
+    text-align:center;
+    /*align-content: space-between; */
+    
+}
+
+.rowFour {
+    display: flex;
+    flex-direction: row;
+    text-align:center;
+    /*align-content: space-between; */
+    
+}
+
+.subDiv1 {
+    background-color: rgb(242, 235, 235);
+    width: 25%;
+    height: 25svh;
+    
+}
+
+.subDiv2 {
+    background-color: rgb(147, 183, 140);
+    width: 25%;
+    height: 25svh;
+    
+}
+
+.subDiv3 {
+    background-color: rgb(186, 177, 198);
+    width: 25%;
+    height: 25svh;
+    
+}
+
+.subDiv4 {
+    background-color: rgb(203, 203, 191);
+    width: 25%;
+    height: 25svh;
+}
