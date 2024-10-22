@@ -596,7 +596,8 @@ function animate() {
 // And get it started by calling animate().
 animate();
 
-
+/*
+//enabling drawing on the canvas
 var square = document.getElementById("drawPlace");
 var paper = square.getContext("2d");
 var pressedMouse = false; 
