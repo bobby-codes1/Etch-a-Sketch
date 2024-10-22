@@ -1,17 +1,58 @@
 .container{
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    background-color: rgb(122, 167, 170);
+    height: 100svh;
+}
+
+.cellClass{
+    position: static;
+    background-color:black;
+    height:100%;
+    width:100%;
+}
+
+.cellClass2{
+    position: static;
+    background-color:rgb(166, 45, 45);
+    height:100%;
+    width:100%;
+}
+
+.cellClass2{
+    position: static;
+    background-color:rgb(166, 45, 45);
+    height:100%;
+    width:100%;
+}
+
+.cellClass3{
+    position: static;
+    background-color:rgb(150, 210, 71);
+    height:100%;
+    width:100%;
+}
+.cellClass4{
+    position: static;
+    background-color:rgb(59, 94, 94);
+    height:100%;
+    width:100%;
 }
 
 .columns{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .rowContainer{
+    position: static;
+    background-color: rgb(168, 114, 48);
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
 }
 
 .rowOne {

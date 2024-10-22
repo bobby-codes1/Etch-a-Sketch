@@ -22,18 +22,181 @@ const divFourteen = document.createElement('div');
 const divFifteen = document.createElement('div');
 const divSixteen = document.createElement('div');*/
 const gridSelector = document.querySelector('#container');
-const gridColumn = document.querySelector('rowContainer');
+gridSelector.setAttribute('class','container');
+const mainContainer = document.createElement('div');
+mainContainer.setAttribute('class','container');
+mainContainer.setAttribute('id', 'mainDiv');
+gridSelector.appendChild(mainContainer);
+/*const divTest = document.createElement('div');
+const divTest2 = document.createElement('div');
+const cell1 = document.createElement('div');
+const cell2 = document.createElement('div');
+const cell3 = document.createElement('div');
+const cell4 = document.createElement('div');
+const cell5 = document.createElement('div');
+const cell6 = document.createElement('div');
+const cell7 = document.createElement('div');
+const cell8 = document.createElement('div');
+cell1.setAttribute('class','cellClass');
+cell2.setAttribute('class','cellClass2');
+cell3.setAttribute('class','cellClass3');
+cell4.setAttribute('class','cellClass4');
+cell5.setAttribute('class','cellClass4');
+cell6.setAttribute('class','cellClass3');
+divTest.setAttribute('class','rowContainer');
+divTest2.setAttribute('class','rowContainer');
+gridSelector.appendChild(mainContainer);
+mainContainer.appendChild(divTest);
+mainContainer.appendChild(divTest2);
+divTest.appendChild(cell1).setAttribute('class','cellClass');
+divTest.appendChild(cell2);
+divTest.appendChild(cell3);
+divTest.appendChild(cell4);
+divTest2.appendChild(cell5).setAttribute('class','cellClass4');
+divTest2.appendChild(cell6).setAttribute('class','cellClass3');
+divTest2.appendChild(cell7).setAttribute('class','cellClass2');
+divTest2.appendChild(cell8).setAttribute('class','cellClass');
+//mainContainer.remove();
+*/
 
 
+
+function createGrid(rows, columns){
+    console.log(mainContainer);
+    const newCells = document.getElementById('mainDiv');  //find the main container
+    newCells.replaceChildren();     //delete all the children of the previous grid to allow creation of a new grid
+
+    for (i=1; i<(rows+1); i++){     //iterate over grid to create cells for desired number of columns and rows
+        let rowNumber = 'row'+i;    //create reference to row to allow easy row creation
+        rowNumber = document.createElement('div');
+        mainContainer.appendChild(rowNumber).setAttribute('class','rowContainer');
+        for(j=1; j<((columns)+1); j++){
+            let cell = 'cell'+j;    //create reference to cells to allow easy cell creation
+            cell = document.createElement('div');
+            rowNumber.appendChild(cell).setAttribute('class','cellClass');  //add the same class to all the cells
+            cell.addEventListener('mouseover', () =>{
+                //change the div's background colour
+                cell.style.backgroundColor = 'blue';
+            });
+            
+            cell.addEventListener('mouseout', () =>{
+                //change the div's background colour
+                cell.style.backgroundColor = '';
+            });
+        }
+    }
+
+}
+
+
+const gridButton = document.createElement('button');
+gridButton.setAttribute('id', '1');
+gridButton.setAttribute('class', 'buttonForGrid');
+gridButton.textContent = 'create grid';
+gridSelector.appendChild(gridButton);
+console.log(typeof gridButton);
+
+//makeGrid(3,3);
+let gridCount;
+
+gridButton.addEventListener('click', () => {
+    gridCount = Number(prompt('How many squares do you want to create?'));
+    console.log(gridCount);
+    createGrid(gridCount,gridCount);
+
+});
+
+//const divTest2 = document.createElement('div');
+//divTest2.setAttribute('class','rowContainer');
+//divTest2.appendChild(cell5).setAttribute('class','cellClass4');
+
+
+
+
+/*const gridColumns = document.querySelector('columnContainer');
+const gridRows = document.querySelector('rowContainer');
+
+
+const row1 = document.createElement('div');
+//row1.setAttribute('id', '1');
+row1.setAttribute('class','rowContainer');
+row1.style.backgroundColor = 'blue';
+gridSelector.appendChild(row1);
+
+const row2 = document.createElement('div');
+//row2.setAttribute('id', '2');
+row2.setAttribute('class','rowContainer');
+row2.style.backgroundColor = 'green';
+gridSelector.appendChild(row2);
+
+const cell1 = document.createElement('div');
+cell1.setAttribute('id', '1');
+cell1.setAttribute('class','rowContainer');
+row1.appendChild(cell1);
+
+const cell2 = document.createElement('div');
+cell2.setAttribute('id', '2');
+cell2.setAttribute('class','rowContainer');
+row1.appendChild(cell2);
+
+const cell3 = document.createElement('div');
+cell3.setAttribute('id', '3');
+cell3.setAttribute('class','rowContainer');
+row2.appendChild(cell3);
+
+const cell4 = document.createElement('div');
+cell4.setAttribute('id', '4');
+cell4.setAttribute('class','rowContainer');
+row2.appendChild(cell4);
+
+
+
+function createGrid(rows, columns){
+    for (i=0; i < rows; i++){
+        let rowDiv = document.createElement('div');
+        rowDiv.style.backgroundColor = 'blue';
+        console.log(rows);
+        console.log(i);
+        gridSelector.appendChild(rowDiv);
+        for(i = 0; i<columns; i++){
+            let columnDiv = document.createElement('div');
+            columnDiv.style.backgroundColor = 'red';
+            rowDiv.appendChild(columnDiv);
+            console.log(columns);
+            console.log(i);
+        }
+
+        /*let rowNumber = 'row0'+i;
+        let rowName = 'row'+i;
+        let cellNummber = 'cell0'+cellCount;
+        let cellName = 'cell'+cellCount;
+        gridSelector.appendChild(rowNumber)
+        */
+        
+        //console.log(rowNumber);
+    
+    /*rowDiv.addEventListener('mouseover', () =>{
+        //change the div's background colour
+        rowDiv.style.backgroundColor = 'blue';
+    });
+    
+    rowDiv.addEventListener('mouseout', () =>{
+        //change the div's background colour
+        rowDiv.style.backgroundColor = '';
+    });
+    
+}
+*/
+/*
 
 
 //create grid with function
 function makeGrid(rows, columns){
-    const gridColumn = document.querySelector('rowContainer');
+    //const gridColumn = document.querySelector('rowContainer');
     //gridSelector.style.setProperty('grid-rows',rows);
     //gridSelector.style.setProperty('grid-columns',columns);
     //increase row count by 1 to create rows first
-    columns++;
+    //columns++;
     
     let rowCheck = 0;
     let columnCheck = 0;
@@ -67,9 +230,9 @@ function makeGrid(rows, columns){
             //create grid items with the remainder of the iterations
             count=count%(columns);
             
-            if(count == 0){
+            if(count == 0){ //resetting count to 1 if it is reset to 0
                 count = 1;
-                rowCount++;
+                rowCount++; //moving the row count to the next one
             }
             //console.log(document.getElementById('row1'));
             rowName = 'row'+rowCount;
@@ -77,6 +240,8 @@ function makeGrid(rows, columns){
             cellNummber = document.createElement('div');
             cellNummber.setAttribute('id', cellName);
             cellNummber.setAttribute('class','subDiv2');
+
+            
             //cellNummber.style.width = '25svw';
             //console.log(grid);
             //console.log(cellNummber);
@@ -110,8 +275,8 @@ function makeGrid(rows, columns){
     }
    
 }
-
-
+*/
+/*
 const gridButton = document.createElement('button');
 gridButton.setAttribute('id', '1');
 gridButton.setAttribute('class', 'buttonForGrid');
@@ -119,20 +284,21 @@ gridButton.textContent = 'create grid';
 gridSelector.appendChild(gridButton);
 console.log(typeof gridButton);
 
-makeGrid(3,3);
+//makeGrid(3,3);
 let gridCount;
+
 gridButton.addEventListener('click', () => {
     const rowElements = document.getElementsByClassName('container');
     //console.log(typeof 'container');
     gridCount = Number(prompt('How many squares do you want to create?'));
     //delete rowElements;
-    //console.log(gridCount);
-    makeGrid(gridCount,gridCount);
+    console.log(gridCount);
+    createGrid(gridCount,gridCount);
 
 });
 
 
-
+*/
 
 /*
 //create class for divs
@@ -430,6 +596,61 @@ function animate() {
 // And get it started by calling animate().
 animate();
 
+
+var square = document.getElementById("drawPlace");
+var paper = square.getContext("2d");
+var pressedMouse = false; 
+var x;
+var y;
+var colorLine ="#9ACD32";
+var key = {C: 67};
+
+document.addEventListener("mousedown", startDrawing);
+document.addEventListener("mousemove", drawLine);
+document.addEventListener("mouseup", stopDrawing);
+document.addEventListener("keydown", clearCanvas);
+
+function startDrawing(eventvs01){
+	pressedMouse = true;
+	x = eventvs01.offsetX;
+	y = eventvs01.offsetY;
+}
+
+function drawLine(eventvs02) {
+	if (pressedMouse) {
+		document.getElementById("drawPlace").style.cursor = "crosshair";
+		var xM = eventvs02.offsetX;
+		var yM = eventvs02.offsetY;
+		drawing_line(colorLine, x, y, xM, yM, paper);
+		x = xM;
+		y = yM;
+	}
+}
+
+function stopDrawing(eventvs03) {
+	pressedMouse = false;
+	document.getElementById("drawPlace").style.cursor = "default";
+}
+
+function clearCanvas(whenPressKey) {
+	if (whenPressKey.keyCode == key.C) {
+		paper.clearRect(0, 0, square.width, square.height);
+	}
+}
+
+drawing_line("#FF6347", x-1, y, x, y, paper);
+
+function drawing_line(color, x_start, y_start, x_end, y_end, board){
+	board.beginPath();
+	board.strokeStyle = color;
+	board.lineWidth = 2;
+	board.moveTo(x_start,y_start);
+	board.lineTo(x_end,y_end);
+	board.stroke(); 
+	board.closePath();
+}
+
+
 /*
 
 var canvas, ctx, flag = false,
@@ -548,3 +769,5 @@ if (res == 'move') {
 }
 */
 
+//createGrid(2,2);
+//createGrid(3,3);
